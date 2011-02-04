@@ -1,0 +1,13 @@
+<p>
+  <b>Occuring on:</b>
+  <%=h @lunch.occuring_on %>
+</p>
+
+<p>
+  <b>Winning proposal:</b>
+  <%=h @lunch.winning_proposal_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_lunch_path(@lunch) %> |
+<%= link_to 'Back', lunches_path %>

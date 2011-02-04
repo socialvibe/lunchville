@@ -1,0 +1,13 @@
+<p>
+  <b>User:</b>
+  <%=h @order.user_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @order.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

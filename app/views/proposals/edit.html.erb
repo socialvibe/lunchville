@@ -1,0 +1,28 @@
+<h1>Editing proposal</h1>
+
+<% form_for(@proposal) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :lunch_id %><br />
+    <%= f.text_field :lunch_id %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :restaurant_id %><br />
+    <%= f.text_field :restaurant_id %>
+  </p>
+  <p>
+    <%= f.label :votes %><br />
+    <%= f.text_field :votes %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @proposal %> |
+<%= link_to 'Back', proposals_path %>

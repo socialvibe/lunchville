@@ -1,0 +1,22 @@
+<h1>Listing lunches</h1>
+
+<table>
+  <tr>
+    <th>Occuring on</th>
+    <th>Winning proposal</th>
+  </tr>
+
+<% @lunches.each do |lunch| %>
+  <tr>
+    <td><%=h lunch.occuring_on %></td>
+    <td><%=h lunch.winning_proposal_id %></td>
+    <td><%= link_to 'Show', lunch %></td>
+    <td><%= link_to 'Edit', edit_lunch_path(lunch) %></td>
+    <td><%= link_to 'Destroy', lunch, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New lunch', new_lunch_path %>
