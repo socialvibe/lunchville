@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :orders
 
-  map.resources :restaurants
+  map.resources :restaurants, :member => {:rate => :post} 
 
   # The priority is based upon order of creation: first created -> highest priority.
 
