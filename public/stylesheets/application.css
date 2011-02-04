@@ -1,0 +1,25 @@
+body { background-color: #3f96d2; }
+
+div#header {
+	margin: 0 auto;
+	width: 800px;
+}
+
+div#header div#user_email {
+	display: none;
+}
+
+div#header div#lunchcash_count {
+	display: none;
+}
+
+
+div#content {
+	margin: 0 auto;
+	width: 800px;
+}
+
+div#content img#splash_image {
+	margin: 0 auto;
+	padding-top: 50px;
+}
