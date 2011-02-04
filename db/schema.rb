@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110204202745) do
+ActiveRecord::Schema.define(:version => 20110204203548) do
 
   create_table "lunches", :force => true do |t|
     t.date     "occuring_on"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20110204202745) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "menu_url"
   end
 
   create_table "users", :force => true do |t|
