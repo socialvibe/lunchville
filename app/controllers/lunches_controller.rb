@@ -42,9 +42,9 @@ class LunchesController < ApplicationController
   def vote
     @lunch = Lunch.find(params[:id])
     if params[:up_or_down]
-      @current_user.vote_for(@lunch) 
+      current_user.vote_for(@lunch) 
     else
-      @current_user.vote_against(@lunch) 
+      current_user.vote_against(@lunch) 
     end
 
     respond_to do |format|
