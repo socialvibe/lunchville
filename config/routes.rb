@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :proposals
 
-  map.resources :lunches
+  map.resources :lunches, :member => {:vote => :post}
 
   map.resources :users
 
