@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110204203548) do
+ActiveRecord::Schema.define(:version => 20110204203946) do
 
   create_table "lunches", :force => true do |t|
     t.date     "occuring_on"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20110204203548) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "menu_url"
+    t.boolean  "family_style"
   end
 
   create_table "users", :force => true do |t|
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20110204203548) do
     t.integer  "lunch_bucks"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gender"
   end
 
 end
