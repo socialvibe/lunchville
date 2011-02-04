@@ -8,6 +8,10 @@
   <%=h @user.lunch_bucks %>
 </p>
 
+<p>
+  <b>Lunch bucks:</b>
+  <%=h @user.userhash %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
