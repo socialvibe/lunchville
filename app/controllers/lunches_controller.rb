@@ -41,11 +41,8 @@ class LunchesController < ApplicationController
   # POST /vote.xml
   def vote
     @lunch = Lunch.find(params[:id])
-    if params[:up_or_down]
-      current_user.vote_for(@lunch) 
-    else
-      current_user.vote_against(@lunch) 
-    end
+    current_user.vote_for(@lunch) if params[:up_or_down] == 'up'
+    current_user.vote_against(@lunch) if params[:up_or_down] == 'down'
 
     respond_to do |format|
       flash[:notice] = 'Thank you for voting.'

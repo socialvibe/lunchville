@@ -8,6 +8,11 @@
   <%=h @lunch.winning_proposal_id %>
 </p>
 
+<p>
+  <b>Votes count:</b>
+  <%=h @lunch.votes_count %>
+</p>
+
 
 <%= link_to 'Edit', edit_lunch_path(@lunch) %> |
 <%= link_to 'Back', lunches_path %>

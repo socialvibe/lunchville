@@ -4,15 +4,19 @@
   <tr>
     <th>Occuring on</th>
     <th>Winning proposal</th>
+    <th>Votes</th>
   </tr>
 
 <% @lunches.each do |lunch| %>
   <tr>
     <td><%=h lunch.occuring_on %></td>
     <td><%=h lunch.winning_proposal_id %></td>
+	<td><%=h lunch.votes_count %></td>
     <td><%= link_to 'Show', lunch %></td>
     <td><%= link_to 'Edit', edit_lunch_path(lunch) %></td>
     <td><%= link_to 'Destroy', lunch, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Vote For', vote_lunch_path(lunch, :up_or_down => 'up', :user_hash => current_user.user_hash), :method => :post %></td>
+    <td><%= link_to 'Vote Against', vote_lunch_path(lunch, :up_or_down => 'down', :user_hash => current_user.user_hash), :method => :post %></td>
   </tr>
 <% end %>
 </table>

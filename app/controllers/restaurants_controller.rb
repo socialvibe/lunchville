@@ -54,6 +54,17 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  # POST /restaurants
+  def rate
+    @restaurant = restaurant.find(params[:id])
+    @restaurant.rate(params[:stars], current_user, params[:dimension])
+    
+    render :update do |page|
+      page.replace_html @restaurant.wrapper_dom_id(params), ratings_for(@restaurant, params.merge(:wrap => false))
+      page.visual_effect :highlight, @restaurant.wrapper_dom_id(params)
+    end
+  end
+
   # PUT /restaurants/1
   # PUT /restaurants/1.xml
   def update
