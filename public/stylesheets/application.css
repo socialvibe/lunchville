@@ -23,3 +23,11 @@ div#content img#splash_image {
 	margin: 0 auto;
 	padding-top: 50px;
 }
+
+div#content div#gallery_dialog {
+	background-image: url('/images/gallery-dialog-background.png');
+	
+	width: 700px;
+	height: 420px;
+	margin: 0 auto;	
+}

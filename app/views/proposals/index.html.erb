@@ -1,26 +1,14 @@
-<h1>Listing proposals</h1>
+<div id="gallery_dialog">
+  <%= render :partial => "shared/gallery" %>
+</div>
 
-<table>
-  <tr>
-    <th>Lunch</th>
-    <th>User</th>
-    <th>Restaurant</th>
-    <th>Votes</th>
-  </tr>
 
-<% @proposals.each do |proposal| %>
-  <tr>
-    <td><%=h proposal.lunch_id %></td>
-    <td><%=h proposal.user_id %></td>
-    <td><%=h proposal.restaurant_id %></td>
-    <td><%=h proposal.votes %></td>
-    <td><%= link_to 'Show', proposal %></td>
-    <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
-    <td><%= link_to 'Destroy', proposal, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
-
-<%= link_to 'New proposal', new_proposal_path %>
+<script type="text/javascript" charset="utf-8">
+  Gallery.gallery_items = [];
+  
+  <% @proposals.each do |proposal| -%>
+    Gallery.gallery_items.push* 
+  <% end -%>
+  
+</script>
