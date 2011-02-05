@@ -1,11 +1,12 @@
 <div id="header">
+<% if current_user %>
   <div id="user_email">
     Welcome,<br>
-    &nbsp;&nbsp;&nbsp;Christopher
+    <%= current_user.name -%>
   </div>
   
   <div id="lunchcash_count">
-    10
+    <%= current_user.lunch_bucks -%>
   </div>
-  
+<% end %>
 </div>

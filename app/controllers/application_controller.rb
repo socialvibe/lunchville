@@ -23,7 +23,7 @@ protected
 
   def set_user
     @current_user = User.find_by_user_hash(params[:user_hash])
-    raise BadUserError unless @current_user.present?
+    # raise BadUserError unless @current_user.present?
   end
   
 end

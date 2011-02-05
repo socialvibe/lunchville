@@ -2,13 +2,12 @@
   <%= render :partial => "shared/gallery" %>
 </div>
 
-
-
 <script type="text/javascript" charset="utf-8">
   Gallery.gallery_items = [];
   
   <% @proposals.each do |proposal| -%>
-    Gallery.gallery_items.push* 
+    Gallery.gallery_items.push( <%= proposal.to_gallery_json -%> );
   <% end -%>
   
+  Gallery.init();
 </script>

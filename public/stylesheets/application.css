@@ -7,7 +7,6 @@ body {
 	font-family: "Sketch", serif;
 	background-color: #3f96d2;
 	color: #004382;
-
  }
 
 
@@ -64,4 +63,61 @@ div#content div#gallery_dialog div#gallery {
 		
 	width: 627px;
 	height: 274px;
+}
+
+div#content div#gallery_dialog div#gallery div.gallery_item {
+	position: absolute;
+	top: 25px;
+	
+	width: 150px;
+	height: 225px;
+	
+	background: #cccccc;
+}
+
+div#content div#gallery_dialog div#gallery div.active {
+	background: #ffffff;
+}
+
+div#content div#gallery_dialog div#gallery div.inactive {
+	background: #cccccc;
+}
+
+div#content div#gallery_dialog div#gallery div#prev_item {
+	left: 74px;
+}
+
+div#content div#gallery_dialog div#gallery div#selected_item {
+	left: 239px;
+}
+
+div#content div#gallery_dialog div#gallery div#next_item {
+	left: 404px;
+}
+
+div#content div#gallery_dialog div#gallery p.name {
+	text-align: center;
+	margin: 10px 0px 0px 0px;
+	padding: 0;
+	
+	font-size: 1em;
+}
+
+div#content div#gallery_dialog div#gallery p.subtext {
+	text-align: center;	
+	margin: 0;
+	padding: 0;
+	
+	font-size: 0.75em;
+	
+}
+
+div#content div#gallery_dialog div#gallery img.item_image {
+	width: 100px;
+	height: 100px;
+	
+	position: relative;
+	left: 25px;
+	top: 40px;
+	
 }
