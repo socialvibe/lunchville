@@ -1,4 +1,6 @@
 class ProposalsController < ApplicationController
+  layout 'application'
+
   # GET /proposals
   # GET /proposals.xml
   def index
