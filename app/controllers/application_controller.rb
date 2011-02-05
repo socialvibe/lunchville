@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_user
   
+  class BadUserError < StandardError; end
+  
+  rescue_from BadUserError do |exception|
+    render :text => 'Invalid user.'
+  end  
   
 protected
 
@@ -18,6 +23,7 @@ protected
 
   def set_user
     @current_user = User.find_by_user_hash(params[:user_hash])
+    raise BadUserError unless @current_user.present?
   end
   
 end

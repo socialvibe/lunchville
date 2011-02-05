@@ -1,19 +1,14 @@
-<h1>New order</h1>
-
 <% form_for(@order) do |f| %>
   <%= f.error_messages %>
-
+  
   <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= @current_user.email %>
   </p>
   <p>
-    <%= f.label :description %><br />
+    <%= f.label :description, 'Enter your order below' %><br />
     <%= f.text_area :description %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Submit Order' %>
   </p>
 <% end %>
-
-<%= link_to 'Back', orders_path %>
