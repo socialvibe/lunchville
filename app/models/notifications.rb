@@ -1,30 +1,31 @@
 class Notifications < ActionMailer::Base
-
-  def submit_proposals(sent_at = Time.now)
-    subject    'Notifications#submit_proposals'
-    recipients 'chris@svnetwork.com'
+  default_url_options[:host] = WEB_HOST
+  
+  def submit_proposals(user, sent_at = Time.now)
+    subject    'Time to submit lunch proposals for this week'
+    recipients user.email
     from       'lunch@svnetwork.com'
     sent_on    sent_at
     
-    body       :greeting => 'Hi,'
+    body       :user => user, :proposal_url => new_proposal_url(:user_hash => user.user_hash)
   end
 
-  def vote_on_proposals(sent_at = Time.now)
+  def vote_on_proposals(user, sent_at = Time.now)
     subject    'Notifications#vote_on_proposals'
-    recipients 'chris@svnetwork.com'
+    recipients user.email
     from       'lunch@svnetwork.com'
     sent_on    sent_at
     
-    body       :greeting => 'Hi,'
+    body       :user => user, :vote_url => 
   end
 
-  def submit_orders(sent_at = Time.now)
+  def submit_orders(user, sent_at = Time.now)
     subject    'Notifications#submit_orders'
-    recipients 'chris@svnetwork.com'
+    recipients user.email
     from       'lunch@svnetwork.com'
     sent_on    sent_at
     
-    body       :greeting => 'Hi,'
+    body       :user => user
   end
 
 end
