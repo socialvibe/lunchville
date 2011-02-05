@@ -11,21 +11,22 @@ class Notifications < ActionMailer::Base
   end
 
   def vote_on_proposals(user, sent_at = Time.now)
-    subject    'Notifications#vote_on_proposals'
+    subject    'Time to vote on your lunch'
     recipients user.email
     from       'lunch@svnetwork.com'
     sent_on    sent_at
     
-    body       :user => user, :vote_url => 
+    body       :user => user, :vote_url => 'TODO:'
   end
 
-  def submit_orders(user, sent_at = Time.now)
-    subject    'Notifications#submit_orders'
+  def submit_orders(user, restaurant, sent_at = Time.now)
+    restaurant_name = restaurant.name
+    subject    "This week for lunch:  #{restaurant_name}"
     recipients user.email
     from       'lunch@svnetwork.com'
     sent_on    sent_at
     
-    body       :user => user
+    body       :user => user, :restaurant_name => restaurant_name, :order_url => 'TODO:' 
   end
 
 end
