@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110204234501) do
+ActiveRecord::Schema.define(:version => 20110205001051) do
 
   create_table "lunches", :force => true do |t|
     t.date     "occuring_on"
