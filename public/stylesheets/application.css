@@ -1,16 +1,41 @@
-body { background-color: #3f96d2; }
+@font-face {
+  font-family: "Sketch";
+  src: url("/fonts/SketchRockwell-Bold.ttf");
+}
+
+body { 
+	font-family: "Sketch", serif;
+	background-color: #3f96d2;
+	color: #004382;
+
+ }
+
 
 div#header {
+	background-image: url('/images/header-background.jpg');
+	
 	margin: 0 auto;
 	width: 800px;
+	height: 270px;
 }
 
 div#header div#user_email {
-	display: none;
+	float: left;
+	position: relative;
+	top: 120px;
+	left: 340px;
+	
+	font-size: 1.3em;
+	line-height: 135%;
 }
 
 div#header div#lunchcash_count {
-	display: none;
+	float: right;
+	position: relative;
+	top: 120px;
+	right: 140px;
+	
+	font-size: 5em;
 }
 
 
@@ -30,4 +55,13 @@ div#content div#gallery_dialog {
 	width: 700px;
 	height: 420px;
 	margin: 0 auto;	
+}
+
+div#content div#gallery_dialog div#gallery {
+	position: relative;
+	top: 39px;
+	left: 37px;
+		
+	width: 627px;
+	height: 274px;
 }

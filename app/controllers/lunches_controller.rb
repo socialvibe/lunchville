@@ -1,4 +1,6 @@
 class LunchesController < ApplicationController
+  layout 'application'
+  
   # GET /lunches
   # GET /lunches.xml
   def index

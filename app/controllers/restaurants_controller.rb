@@ -1,4 +1,6 @@
 class RestaurantsController < ApplicationController
+  layout 'application'
+  
   # GET /restaurants
   # GET /restaurants.xml
   def index

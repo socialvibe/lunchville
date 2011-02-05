@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  layout 'application'
+  
+  
   # GET /orders
   # GET /orders.xml
   def index
@@ -25,6 +28,8 @@ class OrdersController < ApplicationController
   # GET /orders/new.xml
   def new
     @order = Order.new
+    @lunch = Lunch.for_today
+    @restaurant = @lunch.restaurant
 
     respond_to do |format|
       format.html # new.html.erb

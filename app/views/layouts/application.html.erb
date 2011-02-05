@@ -7,11 +7,10 @@
   <title>LunchVille</title>
   <%= javascript_include_tag :defaults %>  
   <%= stylesheet_link_tag 'application' %>
+  
+  <%= javascript_include_tag 'gallery.js' %>
 </head>
 <body>
-
-<p style="color: green"><%= flash[:notice] %></p>
-
 <%= render :partial => 'shared/header' %>
 
 <div id="content">
