@@ -4,6 +4,8 @@ class Lunch < ActiveRecord::Base
   has_many :orders
   has_one :proposal, :foreign_key => :winning_proposal_id
   
+  validates :occuring_on, :date => true
+  
   delegate :restaurant, :to => :proposal
   
   class << self

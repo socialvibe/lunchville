@@ -45,6 +45,8 @@ GEM
     builder (2.1.2)
     chronic (0.3.0)
     columnize (0.3.2)
+    date_validator (0.6.1)
+      activemodel (~> 3.0.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.5.0)
@@ -92,6 +94,7 @@ PLATFORMS
 DEPENDENCIES
   ajaxful_rating
   chronic
+  date_validator
   exception_notification!
   rails
   ruby-debug

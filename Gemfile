@@ -6,6 +6,7 @@ gem "exception_notification", :git => "git://github.com/rails/exception_notifica
 gem "ajaxful_rating"
 gem 'chronic'
 gem "thumbs_up", :git => "git://github.com/sashich/thumbs_up.git"
+gem "date_validator"
 
 group :development, :test do
   gem "ruby-debug"

@@ -84,4 +84,14 @@ class ProposalsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def vote
+    @proposal = Proposal.find(params[:id])
+    current_user.vote_for(@lunch)
+    
+    respond_to do |format|
+      flash[:notice] = 'Thank you for voting.'
+      format.html { redirect_to(@proposal) }
+    end
+  end
 end
