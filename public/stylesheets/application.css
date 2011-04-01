@@ -3,16 +3,19 @@
   src: url("/fonts/SketchRockwell-Bold.ttf");
 }
 
+h1 {
+	margin: 0;
+}
+
 body { 
 	font-family: "Sketch", serif;
 	background-color: #3f96d2;
+	margin: 0;
 	color: #004382;
- }
-
+}
 
 div#header {
-	background-image: url('/images/header-background.jpg');
-	
+	background-color: #bbffff;
 	margin: 0 auto;
 	width: 800px;
 	height: 270px;
@@ -33,14 +36,18 @@ div#header div#lunchcash_count {
 	position: relative;
 	top: 120px;
 	right: 140px;
-	
+
 	font-size: 5em;
 }
 
 
 div#content {
 	margin: 0 auto;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
 	width: 800px;
+	background-color: #bbffff;
 }
 
 div#content img#splash_image {
