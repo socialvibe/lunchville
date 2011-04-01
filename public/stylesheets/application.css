@@ -129,3 +129,8 @@ div#content div#gallery_dialog div#gallery img.item_image {
 	top: 40px;
 	
 }
+
+td.user-email, tr.user-email {
+	width: 400px;
+	text-align: left;
+}

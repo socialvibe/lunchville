@@ -1,17 +1,15 @@
 <h1>Listing users</h1>
 
 <table>
-  <tr>
+  <tr class='user-email'>
     <th>Email</th>
     <th>Lunch bucks</th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
-    <td><%=h user.email %></td>
+    <td class='user-email'><%=h user.email %></td>
     <td><%=h user.lunch_bucks %></td>
-    <td><%=h user.user_hash %></td>
-    <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
