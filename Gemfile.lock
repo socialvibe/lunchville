@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.5)
       activesupport (= 3.0.5)
     activesupport (3.0.5)
+    ajaxful_rating (2.2.8.2)
     arel (2.0.9)
     builder (2.1.2)
     columnize (0.3.2)
@@ -76,6 +77,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ajaxful_rating
   rails
   ruby-debug
   sqlite3
