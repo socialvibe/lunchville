@@ -12,6 +12,8 @@ class OrdersController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @orders }
     end
+  rescue
+    render :text => 'No ordering today'
   end
 
   # GET /orders/1
