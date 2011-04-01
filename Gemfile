@@ -5,7 +5,7 @@ gem 'sqlite3'
 gem "exception_notification", :git => "git://github.com/rails/exception_notification", :require => 'exception_notifier'
 gem "ajaxful_rating"
 gem 'chronic'
-gem "vote_fu", :git => "git://github.com/chrisb87/vote_fu.git"
+gem "thumbs_up", :git => "git://github.com/sashich/thumbs_up.git"
 
 group :development, :test do
   gem "ruby-debug"
