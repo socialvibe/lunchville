@@ -15,10 +15,13 @@ body {
 }
 
 div#header {
-	background-color: #bbffff;
 	margin: 0 auto;
-	width: 800px;
+	width: 980px;
 	height: 270px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background: url("/images/bgContainer_v2.png") repeat-y scroll left center transparent;
+	/* background-color: #bbffff; */
 }
 
 div#header div#user_email {
@@ -46,8 +49,8 @@ div#content {
 	padding-top: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
-	width: 800px;
-	background-color: #bbffff;
+	width: 980px;
+	background: url("/images/bgContainer_v2.png") repeat-y scroll left center transparent;
 }
 
 div#content img#splash_image {
