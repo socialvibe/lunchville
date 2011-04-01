@@ -39,19 +39,6 @@ class LunchesController < ApplicationController
     @lunch = Lunch.find(params[:id])
   end
 
-  # POST /vote
-  # POST /vote.xml
-  def vote
-    @lunch = Lunch.find(params[:id])
-    current_user.vote_for(@lunch) if params[:up_or_down] == 'up'
-    current_user.vote_against(@lunch) if params[:up_or_down] == 'down'
-
-    respond_to do |format|
-      flash[:notice] = 'Thank you for voting.'
-      format.html { redirect_to(@lunch) }
-    end
-  end
-
   # POST /lunches
   # POST /lunches.xml
   def create

@@ -1,9 +1,10 @@
 Lunchville::Application.routes.draw do
   resources :users
-  resources :proposals
-  resources :orders
   
-  resources :lunches do
+  resources :orders
+  resources :lunches
+  
+  resources :proposals do
     member do
       post :vote
     end

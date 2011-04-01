@@ -2,15 +2,14 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Url</th>
+    <th width=300 style='text-align:left'>Name</th>
+    <th width=300 style='text-align:left'>Url</th>
   </tr>
 
 <% @restaurants.each do |restaurant| %>
   <tr>
-    <td><%=h restaurant.name %></td>
-    <td><%=h restaurant.url %></td>
-    <td><%= link_to 'Show', restaurant %></td>
+    <td width=300><%=h restaurant.name %></td>
+    <td width=300><%=h restaurant.url %></td>
     <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
     <td><%= link_to 'Destroy', restaurant, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

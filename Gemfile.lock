@@ -1,14 +1,14 @@
 GIT
-  remote: git://github.com/chrisb87/vote_fu.git
-  revision: 114c53b77172f08994c2ca4cb48070002cb7d7bb
-  specs:
-    vote_fu (0.1.0)
-
-GIT
   remote: git://github.com/rails/exception_notification
   revision: 192a49a02d63d28b23ed41cebadfedd490929cf1
   specs:
     exception_notification (1.0.0)
+
+GIT
+  remote: git://github.com/sashich/thumbs_up.git
+  revision: 4da67fdac92b2a7153bd9510ed491e46a4576a7f
+  specs:
+    thumbs_up (0.3.2)
 
 GEM
   remote: http://rubygems.org/
@@ -45,6 +45,8 @@ GEM
     builder (2.1.2)
     chronic (0.3.0)
     columnize (0.3.2)
+    date_validator (0.6.1)
+      activemodel (~> 3.0.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.5.0)
@@ -92,8 +94,9 @@ PLATFORMS
 DEPENDENCIES
   ajaxful_rating
   chronic
+  date_validator
   exception_notification!
   rails
   ruby-debug
   sqlite3
-  vote_fu!
+  thumbs_up!
