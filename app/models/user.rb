@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   #acts_as_voter
-  ajaxful_rater
+  #ajaxful_rater
   validates_presence_of :email
   has_many :orders
   has_many :proposals  

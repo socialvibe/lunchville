@@ -83,8 +83,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  exception_notification!
   ajaxful_rating
+  exception_notification!
   rails
   ruby-debug
   sqlite3

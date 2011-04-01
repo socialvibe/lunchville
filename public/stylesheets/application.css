@@ -15,10 +15,12 @@ body {
 }
 
 div#header {
-	background-color: #bbffff;
 	margin: 0 auto;
 	width: 800px;
 	height: 270px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: #bbffff;
 }
 
 div#header div#user_email {

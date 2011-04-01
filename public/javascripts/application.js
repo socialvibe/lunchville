@@ -3,7 +3,7 @@
 
 $(document).ready(function(){
 	var ph = pageHeight();
-	$('div#content').height( ph - $('div#header').height() );
+	$('div#content').height( ph - $('div#header').height() - 20 );
 });
  
 function pageHeight()
