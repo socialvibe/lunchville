@@ -2,7 +2,7 @@ class Lunch < ActiveRecord::Base
   acts_as_voteable
   
   has_many :orders
-  belongs_to :proposal, :foreign_key => :winning_proposal_id
+  has_one :proposal, :foreign_key => :winning_proposal_id
   
   delegate :restaurant, :to => :proposal
   
