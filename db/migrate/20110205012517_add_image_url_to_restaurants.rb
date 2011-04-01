@@ -1,6 +1,6 @@
 class AddImageUrlToRestaurants < ActiveRecord::Migration
   def self.up
-    add_column :restaurants, :image_url, :String
+    add_column :restaurants, :image_url, :string
   end
 
   def self.down
