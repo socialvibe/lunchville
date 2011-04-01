@@ -33,3 +33,5 @@ Lunchville::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+HOST = 'localhost:3333'

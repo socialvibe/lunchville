@@ -2,7 +2,7 @@ class Notifications < ActionMailer::Base
   default :from => "no-reply@svnetwork.com"
   
   def submit_proposals(user)
-    @proposal_url = "TODO"
+    @proposal_url = new_proposal_url(:host => HOST, :user_hash => user.user_hash)
     
     mail(
       :to => user.email,
@@ -11,7 +11,7 @@ class Notifications < ActionMailer::Base
   end
   
   def vote_on_proposals(user)
-    @vote_url = "TODO"
+    @vote_url = proposals_url(:host => HOST, :user_hash => user.user_hash)
 
     mail(
       :to => user.email,
@@ -21,7 +21,7 @@ class Notifications < ActionMailer::Base
   
   def submit_orders(user, restaurant)
     @restaurant = restaurant
-    @order_url = "TODO"
+    @order_url = new_order_url(:host => HOST, :user_hash => user.user_hash)
     
     mail(
       :to => user.email,
@@ -31,7 +31,7 @@ class Notifications < ActionMailer::Base
   
   def all_orders_placed(lunch)
     @lunch = lunch
-    @summary_url = "http://lunchville.heroku.com/orders"
+    @summary_url = orders_url(:host => HOST)
     
     mail(
       :to => "chris@svnetwork.com", #TODO: replace with tamara

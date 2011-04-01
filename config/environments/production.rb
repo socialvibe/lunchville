@@ -52,3 +52,5 @@ Lunchville::Application.configure do
     :sender_address => %{"Lunchville" <lunch@svnetwork.com>},
     :exception_recipients => %w{chris@svnetwork.com}
 end
+
+HOST = 'lunchville.heroku.com'
