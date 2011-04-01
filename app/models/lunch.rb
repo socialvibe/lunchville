@@ -21,6 +21,14 @@ class Lunch < ActiveRecord::Base
     end
   end
   
+  def users_missing_orders
+    User.all - orders.map(&:user)
+  end
+  
+  def everyone_has_ordered?
+    users_missing_orders.empty?
+  end
+  
   def can_be_ordered_now?
     restaurant_is_chosen? && is_for_today? && (Time.now < Chronic.parse('Today at 11am'))
   end
