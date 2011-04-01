@@ -4,6 +4,10 @@ class Order < ActiveRecord::Base
   
   after_create :notify_if_everyone_has_ordered
   
+  def self.for_today
+    Lunch.for_today.orders
+  end
+  
   protected
   
     def notify_if_everyone_has_ordered

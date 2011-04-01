@@ -31,7 +31,7 @@ class Notifications < ActionMailer::Base
   
   def all_orders_placed(lunch)
     @lunch = lunch
-    @summary_url = "TODO"
+    @summary_url = "http://lunchville.heroku.com/orders"
     
     mail(
       :to => "chris@svnetwork.com", #TODO: replace with tamara
