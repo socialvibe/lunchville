@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110205012517) do
+ActiveRecord::Schema.define(:version => 20110401221016) do
 
   create_table "lunches", :force => true do |t|
     t.date     "occuring_on"
@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(:version => 20110205012517) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lunch_id"
   end
 
+  add_index "orders", ["lunch_id"], :name => "index_orders_on_lunch_id"
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
 
   create_table "proposals", :force => true do |t|

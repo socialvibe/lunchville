@@ -1,4 +1,4 @@
-<% if Time.now > Chronic.parse('Today at 11am') -%>
+<% if @lunch.can_be_ordered_now? -%>
 
 	<% form_for(@order) do |f| %>
 	  <%= f.error_messages %>
