@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  #acts_as_voter
+  acts_as_voter
   ajaxful_rater
   validates_presence_of :email
   has_many :orders
