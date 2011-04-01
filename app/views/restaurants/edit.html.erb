@@ -1,7 +1,6 @@
 <h1>Editing restaurant</h1>
 
 <% form_for(@restaurant) do |f| %>
-
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -10,6 +9,17 @@
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </p>
+	<p>
+		<%= f.label :menu_url %><br />
+		<%= f.text_field :menu_url %>
+	</p>
+	<p>
+		<%= f.label :yelp_url %><br />
+		<%= f.text_field :yelp_url %>
+	</p>
+	<p>
+		<%= f.check_box :family_style %><%= f.label :family_style %>
+	</p>
   <p>
     <%= f.submit 'Update' %>
   </p>

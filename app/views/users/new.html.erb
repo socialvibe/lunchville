@@ -7,8 +7,8 @@
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :lunch_bucks %><br />
-    <%= f.text_field :lunch_bucks %>
+    <%= f.radio_button :gender, 'male' %><%= f.label 'gender_male', 'Male' %><br />
+    <%= f.radio_button :gender, 'female' %><%= f.label 'gender_female', 'Female' %>
   </p>
   <p>
     <%= f.submit 'Create' %>

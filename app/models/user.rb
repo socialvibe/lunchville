@@ -5,9 +5,11 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :proposals  
   
-  before_create {|user| user.user_hash = ActiveSupport::SecureRandom.hex(16) }
+  before_create {|user| user.user_hash = ActiveSupport::SecureRandom.hex(16); user.lunch_bucks = 3 }
   
   validates_presence_of :email
+  validates_presence_of :gender
+  validates_inclusion_of :gender, :in => %w(male female)
   
   class << self
     def notify_open_proposals

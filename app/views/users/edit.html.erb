@@ -11,6 +11,10 @@
     <%= f.text_field :lunch_bucks %>
   </p>
   <p>
+    <%= f.radio_button :gender, 'male' %><%= f.label 'gender_male', 'Male' %><br />
+    <%= f.radio_button :gender, 'female' %><%= f.label 'gender_female', 'Female' %>
+  </p>
+  <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
