@@ -6,7 +6,7 @@ class Notifications < ActionMailer::Base
     
     mail(
       :to => user.email,
-      :subject => "Time to submit lunch proposals for this week"
+      :subject => "Lunchville:  Time to submit lunch proposals for this week"
     )
   end
   
@@ -15,7 +15,7 @@ class Notifications < ActionMailer::Base
 
     mail(
       :to => user.email,
-      :subject => "Time to vote on your lunch"
+      :subject => "Lunchville:  Time to vote on your lunch"
     )
   end
   
@@ -25,7 +25,17 @@ class Notifications < ActionMailer::Base
     
     mail(
       :to => user.email,
-      :subject => "This week for lunch:  #{@restaurant.name}"
+      :subject => "Lunchville:  This week for lunch:  #{@restaurant.name}"
+    )
+  end
+  
+  def all_orders_placed(lunch)
+    @lunch = lunch
+    @summary_url = "TODO"
+    
+    mail(
+      :to => "chris@svnetwork.com", #TODO: replace with tamara
+      :subject => "Lunchville:  All orders are placed"
     )
   end
 end

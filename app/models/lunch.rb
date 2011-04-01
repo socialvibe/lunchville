@@ -1,6 +1,7 @@
 class Lunch < ActiveRecord::Base
   acts_as_voteable
   
+  has_many :orders
   belongs_to :proposal, :foreign_key => :winning_proposal_id
   
   delegate :restaurant, :to => :proposal
@@ -18,6 +19,26 @@ class Lunch < ActiveRecord::Base
     def create_next_lunch!
       Lunch.create!(:occuring_on => 1.week.from_now)
     end
+  end
+  
+  def users_missing_orders
+    User.all - orders.map(&:user)
+  end
+  
+  def everyone_has_ordered?
+    users_missing_orders.empty?
+  end
+  
+  def can_be_ordered_now?
+    restaurant_is_chosen? && is_for_today? && (Time.now < Chronic.parse('Today at 11am'))
+  end
+  
+  def is_for_today?
+    occuring_on == Date.today
+  end
+  
+  def restaurant_is_chosen?
+    restaurant.present?
   end
   
   def choose_winner
