@@ -13,6 +13,10 @@ class Lunch < ActiveRecord::Base
       lunch = self.for_today
       lunch.choose_winner
       lunch.request_orders
+      create_next_lunch!
+    end
+    def create_next_lunch!
+      Lunch.create!(:occuring_on => 1.week.from_now)
     end
   end
   

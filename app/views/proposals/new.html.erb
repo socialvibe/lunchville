@@ -1,15 +1,19 @@
+<% if Date::DAYNAMES[Time.now.wday] == 'Monday' %>
 
+	<% form_for(@proposal) do |f| %>
+	  <%= f.error_messages %>  
+	  <p>
+	    User:  <%= @current_user.email %>
+	  </p>
+	  <p>
+	    <%= f.label :restaurant_id %><br />
+	    <%= f.select(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name) ) %>
+	  </p>
+	  <p>
+	    <%= f.submit 'Create' %>
+	  </p>
+	<% end %>
 
-<% form_for(@proposal) do |f| %>
-  <%= f.error_messages %>  
-  <p>
-    User:  <%= @current_user.email %>
-  </p>
-  <p>
-    <%= f.label :restaurant_id %><br />
-    <%= f.select(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name) ) %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+<% else -%>
+	<h2>Yo buddy, proposals are only allowed on Mondays.</h2>
+<% end -%>

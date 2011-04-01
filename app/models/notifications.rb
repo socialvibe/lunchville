@@ -2,7 +2,7 @@ class Notifications < ActionMailer::Base
   default_url_options[:host] = WEB_HOST
   
   def submit_proposals(user, sent_at = Time.now)
-    subject    'Time to submit lunch proposals for this week'
+    subject    '[Lunchville] - Time to submit lunch proposals for this week'
     recipients user.email
     from       'lunch@svnetwork.com'
     sent_on    sent_at
@@ -11,7 +11,7 @@ class Notifications < ActionMailer::Base
   end
 
   def vote_on_proposals(user, sent_at = Time.now)
-    subject    'Time to vote on your lunch'
+    subject    '[Lunchville] - Time to vote on your lunch'
     recipients user.email
     from       'lunch@svnetwork.com'
     sent_on    sent_at
@@ -21,7 +21,7 @@ class Notifications < ActionMailer::Base
 
   def submit_orders(user, restaurant, sent_at = Time.now)
     restaurant_name = restaurant.name
-    subject    "This week for lunch:  #{restaurant_name}"
+    subject    '[Lunchville] - This week for lunch:  #{restaurant_name}'
     recipients user.email
     from       'lunch@svnetwork.com'
     sent_on    sent_at
