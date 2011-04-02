@@ -11,7 +11,7 @@ class Proposal < ActiveRecord::Base
       :subtext => 'proposed by ' + user.name, 
       :image_url => restaurant.image_url,
       :links => {
-        'Website' => restaurant.menu_url,
+        'Website' => restaurant.url,
         'Menu' => restaurant.menu_url
       }
     }

@@ -4,7 +4,7 @@ class ProposalsController < ApplicationController
   # GET /proposals
   # GET /proposals.xml
   def index
-    @proposals = Proposal.all
+    @proposals = Lunch.for_today.proposals
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,7 +50,7 @@ class ProposalsController < ApplicationController
         format.html { redirect_to(@proposal) }
         format.xml  { render :xml => @proposal, :status => :created, :location => @proposal }
       else        
-        flash[:notice] = 'Looks like you already submitted a proposal!  Only one per person.'
+        flash.now[:notice] = 'Looks like you already submitted a proposal!  Only one per person.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @proposal.errors, :status => :unprocessable_entity }
       end
