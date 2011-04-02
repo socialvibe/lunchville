@@ -1,18 +1,27 @@
-<% if Date::DAYNAMES[Time.now.wday] == 'Monday' -%>
+<% if Date::DAYNAMES[Time.now.wday] == 'Monday' || true -%>
 
-	<% form_for(@proposal) do |f| %>
-		<%= hidden_field_tag :user_hash, current_user.user_hash %>
-	  <p>
-	    User:  <%= @current_user.email %>
-	  </p>
-	  <p>
-	    <%= f.label :restaurant_id %><br />
-	    <%= f.select(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name) ) %>
-	  </p>
-	  <p>
-	    <%= f.submit 'Create' %>
-	  </p>
-	<% end %>
+<div id="gallery_dialog">  
+  <%= render :partial => "shared/gallery" , :locals => {:gallery_items => @restaurants.map { |r| r.to_gallery_object } } %>
+  	  
+  <div class='button'>
+    <img src='/images/vote_btn.png'/>
+  </div>
+  
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+ function voteOnProposal() {
+   var postData = {};
+   postData.userHash = "<%= params[:user_hash] -%>";
+   postData.proposal = { 'restaurant_id': Gallery.current_id};
+   
+   $.post('/proposals', postData );
+ }
+ 
+ $('div#gallery_dialog div.button').click(voteOnProposal);
+</script>
+
 
 <% else -%>
 	<h2>Yo buddy, proposals are only allowed on Mondays.</h2>
