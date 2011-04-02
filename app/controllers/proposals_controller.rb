@@ -49,7 +49,7 @@ class ProposalsController < ApplicationController
         flash[:notice] = 'Thanks for submitting your proposal!'
         format.html { redirect_to(@proposal) }
         format.xml  { render :xml => @proposal, :status => :created, :location => @proposal }
-      else        
+      else
         flash.now[:notice] = 'Looks like you already submitted a proposal!  Only one per person.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @proposal.errors, :status => :unprocessable_entity }

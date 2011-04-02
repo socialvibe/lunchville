@@ -9,16 +9,16 @@
 	</ul>
 </p>
 
-<table>
+<table border="1px">
   <tr>
-    <th>User</th>
-    <th>Order</th>
+    <th width="300px">User</th>
+    <th width="300px">Order</th>
   </tr>
 
 <% @orders.each do |order| %>
   <tr>
-    <td><%=h order.user.name %></td>
-    <td><%=h order.description %></td>
+    <td><%= order.user.name %></td>
+    <td><%= simple_format order.description %></td>
   </tr>
 <% end %>
 </table>

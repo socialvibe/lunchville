@@ -8,7 +8,7 @@ class Lunch < ActiveRecord::Base
   validates :occuring_on, :date => true
   validates_uniqueness_of :occuring_on
   
-  delegate :restaurant, :to => :proposal
+  delegate :restaurant, :to => :winning_proposal
   
   class << self
     def for_today
@@ -22,9 +22,13 @@ class Lunch < ActiveRecord::Base
       lunch.choose_winner
       lunch.request_orders
       create_next_lunch!
+      give_everyone_a_buck!
     end
     def create_next_lunch!
       Lunch.create!(:occuring_on => Chronic.parse('next wednesday'))
+    end
+    def give_everyone_a_buck!
+      User.update_all('lunch_bucks = lunch_bucks + 1')
     end
   end
   
