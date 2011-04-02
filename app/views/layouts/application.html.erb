@@ -11,8 +11,8 @@
   <%= javascript_include_tag 'application.js' %>
   <%= javascript_include_tag 'gallery.js' %>
 </head>
-<body>
-  <div id="centered" style="align:center;">
+<body style="align:center;">
+  <div id="container" >
     <%= render :partial => 'shared/header' %>
     <div id="content">
 			<p style="color: green"><%= flash[:notice] %></p>

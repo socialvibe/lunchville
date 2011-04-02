@@ -14,12 +14,12 @@ var Gallery = {
 		Gallery.render();
 	},
 	
-	prev: function() { 
+	next: function() { 
 		Gallery.current_index += 1;		
 		Gallery.render();
 	},
 	
-	next: function() { 
+	prev: function() { 
 		Gallery.current_index -= 1;
 		Gallery.render();
 	},
@@ -33,6 +33,10 @@ var Gallery = {
 		$('div#gallery_dialog div#gallery div#prev_arrow').unbind('click');
 		$('div#gallery_dialog div#gallery div#next_arrow').unbind('click');
 		
+		$('div#gallery_dialog div#gallery div#prev_arrow, div#gallery_dialog div#gallery div#next_arrow').unbind('click');
+		$('div#gallery_dialog div#gallery div#prev_arrow, div#gallery_dialog div#gallery div#next_arrow').fadeTo(0, 0.2);
+		
+		
 		// set current_id
 		Gallery.current_id = $('div#gallery_dialog div#gallery li.gallery_item:nth-child(' + (Gallery.current_index+1) + ') input').attr('value');
 		
@@ -44,11 +48,14 @@ var Gallery = {
 		
 		// add click handlers if applicable
 		if (Gallery.current_index > 0) { 
-			$('div#gallery_dialog div#gallery div#next_arrow').click(Gallery.next);			
+			$('div#gallery_dialog div#gallery div#prev_arrow').click(Gallery.prev);
+			$('div#gallery_dialog div#gallery div#prev_arrow').fadeTo(0, 1);
 		}
 		
 		if (Gallery.current_index < Gallery.item_count - 1){
-			$('div#gallery_dialog div#gallery div#prev_arrow').click(Gallery.prev);
+			$('div#gallery_dialog div#gallery div#next_arrow').click(Gallery.next);					
+			$('div#gallery_dialog div#gallery div#next_arrow').fadeTo(0, 1);
+			
 		}
 	}
 	
