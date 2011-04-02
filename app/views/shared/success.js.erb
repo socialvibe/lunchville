@@ -1,0 +1,9 @@
+currently_displayed_lunchbucks = parseInt( $('div#lunchcash_count').text() );
+actual_lunchbucks = <%= current_user.lunch_bucks -%>;
+
+if (currently_displayed_lunchbucks != actual_lunchbucks ) {
+	$('div#lunchcash_count').fadeOut( 1000, function(){
+		$('div#lunchcash_count').text(actual_lunchbucks);
+		$('div#lunchcash_count').fadeIn( 1000 );
+	});
+};

@@ -4,7 +4,7 @@ class ProposalsController < ApplicationController
   # GET /proposals
   # GET /proposals.xml
   def index
-    @proposals = Lunch.for_today.proposals
+    @proposals = Lunch.next.proposals
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +26,8 @@ class ProposalsController < ApplicationController
   # GET /proposals/new
   # GET /proposals/new.xml
   def new
-    @proposal = Lunch.for_today.proposals.new
+    @restaurants = Restaurant.all
+    @proposal = Lunch.next.proposals.new
     
     respond_to do |format|
       format.html # new.html.erb
@@ -42,17 +43,20 @@ class ProposalsController < ApplicationController
   # POST /proposals
   # POST /proposals.xml
   def create
-    @proposal = Lunch.for_today.proposals.new(params[:proposal].merge(:user => current_user))
+    @restaurants = Restaurant.all
+    @proposal = Lunch.next.proposals.new(params[:proposal].merge(:user => current_user))
 
     respond_to do |format|
       if @proposal.save
         flash[:notice] = 'Thanks for submitting your proposal!'
         format.html { redirect_to(@proposal) }
         format.xml  { render :xml => @proposal, :status => :created, :location => @proposal }
+        format.js { render 'shared/success' }
       else
         flash.now[:notice] = 'Looks like you already submitted a proposal!  Only one per person.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @proposal.errors, :status => :unprocessable_entity }
+        format.js { render 'shared/error' }
       end
     end
   end
@@ -88,12 +92,24 @@ class ProposalsController < ApplicationController
   
   def vote
     @proposal = Proposal.find(params[:id])
-    current_user.decrement_lunch_bucks!(params[:amount] || 1)
-    current_user.vote_for(@proposal)
     
-    respond_to do |format|
-      flash[:notice] = 'Thank you for voting.'
-      format.html { redirect_to(@proposal) }
+    begin
+      current_user.decrement_lunch_bucks!(params[:amount].try(:to_i) || 1)
+      current_user.vote_for(@proposal)
+      
+      respond_to do |format|
+        flash[:notice] = 'Thank you for voting.'
+        format.html { redirect_to(@proposal) }
+        format.js { render 'shared/success' }
+      end
+    rescue
+      
+      respond_to do |format|
+        flash[:notice] = 'Sorry, you do not have enough lunch bucks to do that!'
+        format.html { redirect_to(@proposal) }
+        format.js { render 'shared/error' }
+      end
     end
+    
   end
 end

@@ -1,0 +1,11 @@
+alert(3);
+
+$("#sadtrombone").jPlayer({
+	ready: function () {
+		$(this).jPlayer("setMedia", {
+			mp3: "/sadtrombone.mp3"
+		}).jPlayer("play");
+	},
+	swfPath: ".",
+	supplied: "mp3"
+});

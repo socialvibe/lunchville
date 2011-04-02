@@ -1,4 +1,4 @@
-<% if Date::DAYNAMES[Time.now.wday] == 'Tuesday'-%>
+<% if Date::DAYNAMES[Time.now.wday] == 'Tuesday' || true-%>
 	<div id="gallery_dialog">
 	  <%= render :partial => "shared/gallery" , :locals => {:gallery_items => @proposals.map { |p| p.to_gallery_object } } %>
 	  	  
@@ -8,10 +8,28 @@
 	</div>
 	
 	<script type="text/javascript" charset="utf-8">
-	 function voteOnProposal() {
-	   $.post('/proposals/' + Gallery.current_id + '/vote?user_hash=<%= params[:user_hash] -%>');
-	 }
-	 
+	
+	function onPostResult(data, textStatus, jqXHR) {
+    $('div#gallery_dialog div.button img').fadeOut(1000, function(){ 
+     $('div#gallery_dialog div.button img').attr('src', '/images/submitted_btn.png' );
+     $('div#gallery_dialog div.button img').fadeIn(500);
+   });
+
+  };
+
+  function voteOnProposal() {   
+    $('div#gallery_dialog div.button').unbind('click');   
+    $('div#gallery_dialog div.button img').attr( 'src', '/images/submitting_btn.png' );
+    $('div#gallery_dialog div.button img').fadeIn( 500 );
+
+
+    var postData = {};
+    postData.user_hash = "<%= params[:user_hash] -%>";
+    postData.amount = 1;
+
+    $.post('/proposals/' + Gallery.current_id + '/vote', postData, onPostResult, 'script' );
+  };
+	
 	 $('div#gallery_dialog div.button').click(voteOnProposal);
 	</script>
 	

@@ -4,20 +4,33 @@
   <%= render :partial => "shared/gallery" , :locals => {:gallery_items => @restaurants.map { |r| r.to_gallery_object } } %>
   	  
   <div class='button'>
-    <img src='/images/vote_btn.png'/>
+    <img src='/images/propose_btn.png'/>
   </div>
   
 </div>
 
 
 <script type="text/javascript" charset="utf-8">
- function voteOnProposal() {
+ function onPostResult(data, textStatus, jqXHR) {
+   $('div#gallery_dialog div.button img').fadeOut(1000, function(){ 
+    $('div#gallery_dialog div.button img').attr('src', '/images/submitted_btn.png' );
+    $('div#gallery_dialog div.button img').fadeIn(500);
+  });
+     
+ };
+ 
+ function voteOnProposal() {   
+   $('div#gallery_dialog div.button').unbind('click');   
+   $('div#gallery_dialog div.button img').attr( 'src', '/images/submitting_btn.png' );
+   $('div#gallery_dialog div.button img').fadeIn( 500 );
+   
+   
    var postData = {};
-   postData.userHash = "<%= params[:user_hash] -%>";
+   postData.user_hash = "<%= params[:user_hash] -%>";
    postData.proposal = { 'restaurant_id': Gallery.current_id};
    
-   $.post('/proposals', postData );
- }
+   $.post('/proposals', postData, onPostResult, 'script' );
+ };
  
  $('div#gallery_dialog div.button').click(voteOnProposal);
 </script>
