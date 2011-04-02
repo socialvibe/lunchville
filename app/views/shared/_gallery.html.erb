@@ -13,9 +13,9 @@
           <p class='name'><%= gallery_item[:name] -%></p>
           <img class='item_image' src='<%= gallery_item[:image_url] -%>' />
           <p class='subtext'><%= gallery_item[:subtext] -%></p>
-          <% if !gallery_item[:link_hash].blank? -%>
-            <% link_hash.each_key do |key| -%>
-              <a href='<%= link_hash[key] -%>'><%= key -%></a>
+          <% if !gallery_item[:links].empty? -%>
+            <% gallery_item[:links].each_key do |key| -%>
+              <p class='link'><a href='<%= gallery_item[:links][key] -%>' target='_blank'><%= key -%></a></p>
             <% end -%>
           <% else -%>
           <% end -%>

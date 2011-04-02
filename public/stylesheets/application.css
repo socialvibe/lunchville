@@ -170,6 +170,15 @@ div#content div#gallery_dialog div#gallery p.name {
 
 div#content div#gallery_dialog div#gallery p.subtext {
 	text-align: center;	
+	margin: 0px;
+	padding: 0px 0px 10px 0px;
+	
+	font-size: 0.75em;
+	
+}
+
+div#content div#gallery_dialog div#gallery p.link {
+	text-align: center;	
 	margin: 0;
 	padding: 0;
 	
