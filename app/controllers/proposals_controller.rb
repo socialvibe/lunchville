@@ -87,6 +87,7 @@ class ProposalsController < ApplicationController
   
   def vote
     @proposal = Proposal.find(params[:id])
+    current_user.decrement_lunch_bucks!(params[:amount] || 1)
     current_user.vote_for(@lunch)
     
     respond_to do |format|
