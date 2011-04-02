@@ -1,18 +1,20 @@
-<% if Date::DAYNAMES[Time.now.wday] == 'Tuesday' -%>
-
+<% if Date::DAYNAMES[Time.now.wday] == 'Tuesday'-%>
 	<div id="gallery_dialog">
-	  <%= render :partial => "shared/gallery" %>
+	  <%= render :partial => "shared/gallery" , :locals => {:gallery_items => @proposals.map { |p| p.to_gallery_object } } %>
+	  	  
+	  <div class='button'>
+	    <img src='/images/vote_btn.png'/>
+    </div>
 	</div>
-
+	
 	<script type="text/javascript" charset="utf-8">
-	  Gallery.gallery_items = [];
-  
-	  <% @proposals.each do |proposal| -%>
-	    Gallery.gallery_items.push( <%= proposal.to_gallery_json -%> );
-	  <% end -%>
-  
-	  Gallery.init();
+	 function voteOnProposal() {
+	   $.post('/proposals/' + Gallery.current_id + '/vote?user_hash=<%= params[:user_hash] -%>');
+	 }
+	 
+	 $('div#gallery_dialog div.button').click(voteOnProposal);
 	</script>
+	
 
 <% else -%>
 	<h2>Yo buddy, voting is only allowed on Tuesdays.</h2>

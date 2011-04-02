@@ -29,4 +29,9 @@ class User < ActiveRecord::Base
     email.split('@').first
   end
   
+  def decrement_lunch_bucks!(amount)
+    raise "not enough cash" unless lunch_bucks >= amount
+    self.lunch_bucks -= amount
+    save
+  end
 end

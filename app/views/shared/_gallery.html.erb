@@ -1,22 +1,32 @@
 <div id="gallery">
-  <div id="prev_arrow" onClick='onClickPrevArrow'>    
+  <div id="prev_arrow">    
   </div>
 
-  <div id="next_arrow" onClick='onClickNextArrow'>
+  <div id="next_arrow">
   </div>
   
-  <div class='gallery_item' id="prev_item">
-    <p class='name'></span>
-    <p class='subtext'></span>
-  </div>
-
-  <div class='gallery_item' id="selected_item">
-    <p class='name'></span>
-    <p class='subtext'></span>
-  </div>
-
-  <div class='gallery_item' id="next_item">
-    <p class='name'></span>
-    <p class='subtext'></span>
-  </div>
+  <ul class='gallery_items'>
+    <% if !gallery_items.nil? -%>
+      <% for gallery_item in gallery_items -%>
+        <li class='gallery_item'>
+          <input type='hidden' name='id' value="<%= gallery_item[:id] -%>">
+          <p class='name'><%= gallery_item[:name] -%></p>
+          <img class='item_image' src='<%= gallery_item[:image_url] -%>' />
+          <p class='subtext'><%= gallery_item[:subtext] -%></p>
+          <% if !gallery_item[:link_hash].blank? -%>
+            <% link_hash.each_key do |key| -%>
+              <a href='<%= link_hash[key] -%>'><%= key -%></a>
+            <% end -%>
+          <% else -%>
+          <% end -%>
+        </li>
+      <% end -%>
+    <% else -%>
+      <!-- add code here for empty galleries -->
+    <% end -%>
+  </ul>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(Gallery.init);
+</script>

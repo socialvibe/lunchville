@@ -5,7 +5,15 @@ class Proposal < ActiveRecord::Base
   
   validates_uniqueness_of :user_id, :scope => :lunch_id
   
-  def to_gallery_json
-    { :name => restaurant.name, :subtext => 'proposed by ' + user.name, :image_url => restaurant.image_url }.to_json
+  def to_gallery_object
+    { :id => id,
+      :name => restaurant.name, 
+      :subtext => 'proposed by ' + user.name, 
+      :image_url => restaurant.image_url,
+      :links => {
+        'Website' => restaurant.menu_url,
+        'Menu' => restaurant.menu_url
+      }
+    }
   end
 end
