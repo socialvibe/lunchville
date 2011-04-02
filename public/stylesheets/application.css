@@ -64,6 +64,17 @@ div#content div#gallery_dialog {
 	margin: 0 auto;	
 }
 
+div#content div#gallery_dialog div.button{
+	width: 230px;
+	height: 52px;
+	
+	margin: 0 auto;	
+	
+	cursor: hand;
+	cursor: pointer;
+}
+
+
 div#content div#gallery_dialog div#gallery {
 	position: relative;
 	top: 39px;
@@ -71,9 +82,42 @@ div#content div#gallery_dialog div#gallery {
 		
 	width: 627px;
 	height: 274px;
+	
+	margin-bottom: 50px;
 }
 
-div#content div#gallery_dialog div#gallery div.gallery_item {
+div#content div#gallery_dialog div#gallery div#prev_arrow {	
+	background-image: url('/images/left_arrow.png');
+	width: 41px;
+	height: 54px;
+	
+	cursor: hand;
+	cursor: pointer;
+	
+	position: absolute;
+	top: 104px;
+	left: 10px;
+}
+
+div#content div#gallery_dialog div#gallery div#next_arrow {	
+	background-image: url('/images/right_arrow.png');
+	width: 41px;
+	height: 54px;
+	
+	cursor: hand;
+	cursor: pointer;
+	
+	position: absolute;
+	top: 104px;
+	right: 10px;
+}
+
+
+div#content div#gallery_dialog div#gallery ul {	
+	list-style: none;
+}
+
+div#content div#gallery_dialog div#gallery li.gallery_item {	
 	position: absolute;
 	top: 25px;
 	
@@ -83,32 +127,35 @@ div#content div#gallery_dialog div#gallery div.gallery_item {
 	background: #cccccc;
 }
 
-div#content div#gallery_dialog div#gallery div.active {
-	background: #ffffff;
+div#content div#gallery_dialog div#gallery li {
+	display:none;
 }
 
-div#content div#gallery_dialog div#gallery div.inactive {
-	background: #cccccc;
-}
-
-div#content div#gallery_dialog div#gallery div#prev_item {
+div#content div#gallery_dialog div#gallery li.prev {
+	display:inline;
 	left: 74px;
 }
 
-div#content div#gallery_dialog div#gallery div#selected_item {
+div#content div#gallery_dialog div#gallery li.curr {
+	display:inline;
 	left: 239px;
+	
+	background: #eeeeee;
+	border: 2px yellow solid;
 }
 
-div#content div#gallery_dialog div#gallery div#next_item {
+div#content div#gallery_dialog div#gallery li.next {
+	display:inline;
 	left: 404px;
 }
 
 div#content div#gallery_dialog div#gallery p.name {
 	text-align: center;
 	margin: 10px 0px 0px 0px;
-	padding: 0;
+	padding: 0px;
 	
-	font-size: 1em;
+	font-size: 0.9em;
+	height: 40px;
 }
 
 div#content div#gallery_dialog div#gallery p.subtext {
@@ -123,10 +170,9 @@ div#content div#gallery_dialog div#gallery p.subtext {
 div#content div#gallery_dialog div#gallery img.item_image {
 	width: 100px;
 	height: 100px;
-	
-	position: relative;
+		
 	left: 25px;
-	top: 40px;
+	position: relative;
 	
 }
 
