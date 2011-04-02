@@ -3,9 +3,10 @@ class Lunch < ActiveRecord::Base
   
   has_many :orders
   has_many :proposals
-  has_one :proposal, :foreign_key => :winning_proposal_id
+  belongs_to :winning_proposal, :class_name => 'Proposal'
   
   validates :occuring_on, :date => true
+  validates_uniqueness_of :occuring_on
   
   delegate :restaurant, :to => :proposal
   
@@ -23,7 +24,7 @@ class Lunch < ActiveRecord::Base
       create_next_lunch!
     end
     def create_next_lunch!
-      Lunch.create!(:occuring_on => 1.week.from_now)
+      Lunch.create!(:occuring_on => Chronic.parse('next wednesday'))
     end
   end
   
@@ -48,13 +49,13 @@ class Lunch < ActiveRecord::Base
   end
   
   def choose_winner
-    self.proposal = Proposal.find(:first, :conditions => {:lunch_id => self.id}, :order => 'votes DESC')
+    self.winning_proposal = Proposal.find(:first, :conditions => {:lunch_id => self.id}, :order => 'votes DESC')
     save!
   end
   
   def request_orders
     User.all.each do |user|
-      Notifications.deliver_submit_orders(user, self.restaurant)
+      Notifications.deliver_submit_orders(user, winning_proposal.restaurant)
     end
   end
   
