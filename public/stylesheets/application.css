@@ -12,7 +12,7 @@ html {
 
 body { 
 	font-family: "Sketch", serif;
-	background-color: #3f96d2;
+	background: url("/images/stripe_bg.png") repeat scroll left top transparent;
 	margin: 0;
 	color: #004382;
 	
@@ -25,21 +25,23 @@ div#container {
 	padding: 0px 10px;
 	
 	margin: 0 auto;
-	background: url("/images/sideshadow.png") repeat-y scroll left center transparent;	
+	background: url("/images/blue-sideshadow.png") repeat-y scroll left center transparent;	
 	
 }
 
 div#header {
 	margin: 0 auto;
 	width: 960px;
-	height: 270px;	
+	height: 270px;
+	
+	background: url('/images/header-background.jpg') center no-repeat;	
 }
 
 div#header div#user_email {
 	float: left;
 	position: relative;
 	top: 120px;
-	left: 340px;
+	left: 420px;
 	font-size: 1.3em;
 	line-height: 135%;
 }
@@ -48,14 +50,14 @@ div#header div#lunchcash_count {
 	float: right;
 	position: relative;
 	top: 120px;
-	right: 140px;	
+	right: 230px;	
 
 	font-size: 5em;
 }
 
 
 div#content {
-	padding-top: 40px;
+	padding-top: 10px;
 	width: 960px;
 }
 

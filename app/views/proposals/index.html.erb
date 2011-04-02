@@ -1,4 +1,4 @@
-<% if Date::DAYNAMES[Time.now.wday] == 'Tuesday'-%>
+<% if Date::DAYNAMES[Time.now.wday] == 'Tuesday' || true-%>
 	<div id="gallery_dialog">
 	  <%= render :partial => "shared/gallery" , :locals => {:gallery_items => @proposals.map { |p| p.to_gallery_object } } %>
 	  	  
