@@ -8,3 +8,15 @@ function pageHeight()
 	document.documentElement.clientHeight ?  document.documentElement.clientHeight :
 	document.body != null? document.body.clientHeight : null;
 }
+
+$(document).ready(function(){  
+	$("#sadtrombone").jPlayer({
+		ready: function () {
+			$(this).jPlayer("setMedia", {
+				mp3: "/sadtrombone.mp3"
+			}).jPlayer("play");
+		},
+		swfPath: ".",
+		supplied: "mp3"
+	});
+});

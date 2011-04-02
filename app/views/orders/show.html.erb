@@ -1,13 +1,4 @@
 <p>
-  <b>User:</b>
-  <%=h @order.user_id %>
+  <b>Here is what you ordered:</b>
+  <%= simple_format @order.description %>
 </p>
-
-<p>
-  <b>Description:</b>
-  <%=h @order.description %>
-</p>
-
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>

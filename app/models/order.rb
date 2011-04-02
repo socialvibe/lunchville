@@ -4,6 +4,9 @@ class Order < ActiveRecord::Base
   
   after_create :notify_if_everyone_has_ordered
   
+  validates_presence_of :description
+  validates_uniqueness_of :user_id, :scope => :lunch_id
+  
   def self.for_today
     Lunch.for_today.orders
   end

@@ -1,8 +1,8 @@
 <% if @lunch.can_be_ordered_now? -%>
 
 	<% form_for(@order) do |f| %>
-	  <%= f.error_messages %>
-  
+	  <%= f.error_messages %>  
+		<%= hidden_field_tag :user_hash, current_user.user_hash %>
 	  <p>
 	    <%= @current_user.email %>
 	  </p>
@@ -17,4 +17,5 @@
 
 <% else -%>
 	Yo buddy, you must place your order before 11am.  Sorry :-(
+	<div id="sadtrombone"></div>
 <% end -%>

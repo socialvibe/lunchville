@@ -12,8 +12,6 @@ class OrdersController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @orders }
     end
-  rescue
-    render :text => 'No ordering today'
   end
 
   # GET /orders/1
@@ -30,8 +28,8 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.xml
   def new
-    @order = Order.new
     @lunch = Lunch.for_today
+    @order = @lunch.orders.new
     @restaurant = @lunch.restaurant
 
     respond_to do |format|
@@ -48,14 +46,17 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.xml
   def create
-    @order = Order.new(params[:order])
-
+    @lunch = Lunch.for_today
+    @order = @lunch.orders.new(params[:order].merge(:user => current_user))
+    @restaurant = @lunch.restaurant
+    
     respond_to do |format|
       if @order.save
-        flash[:notice] = 'Order was successfully created.'
+        flash[:notice] = 'Your order has been placed.  Let the anticipation begin!'
         format.html { redirect_to(@order) }
         format.xml  { render :xml => @order, :status => :created, :location => @order }
       else
+        flash.now[:notice] = 'Looks like you already submitted your order.<br/>Want to change your order?  Email no-one-cares@svnetwork.com ;-)'
         format.html { render :action => "new" }
         format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
       end

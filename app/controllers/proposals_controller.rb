@@ -4,7 +4,7 @@ class ProposalsController < ApplicationController
   # GET /proposals
   # GET /proposals.xml
   def index
-    @proposals = Proposal.all
+    @proposals = Lunch.for_today.proposals
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +26,6 @@ class ProposalsController < ApplicationController
   # GET /proposals/new
   # GET /proposals/new.xml
   def new
-    @restaurants = Restaurant.all
     @proposal = Lunch.for_today.proposals.new
     
     respond_to do |format|
@@ -43,7 +42,6 @@ class ProposalsController < ApplicationController
   # POST /proposals
   # POST /proposals.xml
   def create
-    @restaurants = Restaurant.all
     @proposal = Lunch.for_today.proposals.new(params[:proposal].merge(:user => current_user))
 
     respond_to do |format|
@@ -51,12 +49,10 @@ class ProposalsController < ApplicationController
         flash[:notice] = 'Thanks for submitting your proposal!'
         format.html { redirect_to(@proposal) }
         format.xml  { render :xml => @proposal, :status => :created, :location => @proposal }
-        format.js
-      else        
-        flash[:notice] = 'Looks like you already submitted a proposal!  Only one per person.'
+      else
+        flash.now[:notice] = 'Looks like you already submitted a proposal!  Only one per person.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @proposal.errors, :status => :unprocessable_entity }
-        format.js
       end
     end
   end
