@@ -26,8 +26,8 @@ class ProposalsController < ApplicationController
   # GET /proposals/new
   # GET /proposals/new.xml
   def new
-    @proposal = Proposal.new
-
+    @proposal = Lunch.for_today.proposals.new
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @proposal }
@@ -42,14 +42,15 @@ class ProposalsController < ApplicationController
   # POST /proposals
   # POST /proposals.xml
   def create
-    @proposal = Proposal.new(params[:proposal])
+    @proposal = Lunch.for_today.proposals.new(params[:proposal].merge(:user => current_user))
 
     respond_to do |format|
       if @proposal.save
-        flash[:notice] = 'Proposal was successfully created.'
+        flash[:notice] = 'Thanks for submitting your proposal!'
         format.html { redirect_to(@proposal) }
         format.xml  { render :xml => @proposal, :status => :created, :location => @proposal }
-      else
+      else        
+        flash[:notice] = 'Looks like you already submitted a proposal!  Only one per person.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @proposal.errors, :status => :unprocessable_entity }
       end

@@ -2,6 +2,7 @@ class Lunch < ActiveRecord::Base
   acts_as_voteable
   
   has_many :orders
+  has_many :proposals
   has_one :proposal, :foreign_key => :winning_proposal_id
   
   validates :occuring_on, :date => true
@@ -11,6 +12,9 @@ class Lunch < ActiveRecord::Base
   class << self
     def for_today
       self.find(:first, :conditions => {:occuring_on => Date.today})
+    end
+    def next
+      self.find(:first, :conditions => ["occuring_on > ?", Date.today])
     end
     def prepare_for_today    
       lunch = self.for_today

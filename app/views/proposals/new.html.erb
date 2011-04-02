@@ -1,7 +1,7 @@
 <% if Date::DAYNAMES[Time.now.wday] == 'Monday' -%>
 
 	<% form_for(@proposal) do |f| %>
-	  <%= f.error_messages %>  
+		<%= hidden_field_tag :user_hash, current_user.user_hash %>
 	  <p>
 	    User:  <%= @current_user.email %>
 	  </p>

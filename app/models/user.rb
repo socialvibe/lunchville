@@ -13,13 +13,13 @@ class User < ActiveRecord::Base
   
   class << self
     def notify_open_proposals
-      self.each do |user|
+      all.each do |user|
         Notifications.submit_proposals(user).deliver
       end
     end
   
     def notify_vote_on_proposals
-      self.each do |user|
+      all.each do |user|
         Notifications.vote_on_proposals(user).deliver
       end
     end

@@ -15,6 +15,7 @@
   <div id="centered" style="align:center;">
     <%= render :partial => 'shared/header' %>
     <div id="content">
+			<p style="color: green"><%= flash[:notice] %></p>
       <%= yield %>
     </div>
   </div>
